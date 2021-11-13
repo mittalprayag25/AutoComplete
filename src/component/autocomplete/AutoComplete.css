@@ -1,0 +1,26 @@
+.mainContainer{
+    width : 40%;
+}
+.searchableContainer{
+    width: 100%;
+}
+.searchInput{
+    width : 95%;
+    line-height: 50px;
+    margin-top: 5px;
+    background-image: url(./../../assets/search.png);
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-position: 10px;
+    padding-left: 40px;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+.selectContainer {
+    width : 100%;
+    border: none;
+}
+.options{
+    padding: 22px;
+}
