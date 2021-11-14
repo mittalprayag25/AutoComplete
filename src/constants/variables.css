@@ -1,0 +1,35 @@
+:root {
+    --color-options: #44a1ad;
+    --color-grey: #e1e1e1;
+    --color-red: #db0000;
+    --color-calendar-color: #333333;
+    --color-calendar-disabled-day: #999999;
+    --color-white : #ffffff;
+    --font-family: "Gill Sans";
+    --font-weight-thin: 100;
+    --font-weight-light: 300;
+    --font-weight: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --font-weight-heavy: 900;
+    --font-size-tiny: 10px;
+    --font-size-smaller: 11px;
+    --font-size-small: 12px;
+    --font-size-smallish: 13px;
+    --font-size: 14px;
+    --font-size-smedium: 15px;
+    --font-size-medium: 16px;
+    --font-size-large: 18px;
+    --font-size-largish: 20px;
+    --font-size-larger: 22px;
+    --font-size-huge: 24px;
+    --font-size-truly-huge: 30px;
+    --font-size-really-huge: 36px;
+    --font-size-gigantish: 48px;
+    --font-size-gigantic: 50px;
+    --transition-time-200: 200ms;
+    --transition-time-300: 300ms;
+    --transition-time-400: 400ms;
+    --transition-time-500: 500ms;
+   
+  }

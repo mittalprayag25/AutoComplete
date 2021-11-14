@@ -3,7 +3,8 @@ import AutoComplete from "../../component/autocomplete/AutoComplete";
 import './Home.css';
 
 const App = () => {
-  const [options, setOptions] = useState(['India', 'Singapore', 'China', 'America', 'Australia', 'Kenya', 'South Afirca', 'Iraq', 'Canada']);
+  const data = ['India', 'Singapore', 'China', 'America', 'Australia', 'Kenya', 'South Afirca', 'Iraq', 'Canada'];
+
   const [value, setValue] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -32,7 +33,7 @@ const App = () => {
       <AutoComplete
         value={value}
         data-testid="autocomplete"
-        options={options}
+        options={data}
         onChange={onChange}
         multiValues={selectedOptions}
         onRemove={onRemove}
