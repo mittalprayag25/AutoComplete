@@ -17,6 +17,7 @@ exports[`renders Home 1`] = `
           <input
             class="searchInput"
             data-testid="searchInput"
+            id="searchInput"
             placeholder="Search.."
             type="text"
           />

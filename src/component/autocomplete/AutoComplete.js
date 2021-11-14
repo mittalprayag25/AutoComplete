@@ -5,16 +5,12 @@ import './AutoComplete.css';
 const AutoComplete = (props) => {
     const [dictionary, setDictionary] = useState([]);
     const { options, onChange, value, onTextChange, multiValues, onRemove } = props;
-    const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true);
+    const { refSelect, isComponentVisible, setIsComponentVisible } = useComponentVisible(true);
 
     useEffect(() => {
         setDictionary(options);
     }, [options]);
 
-    const handleChange = (e) => {
-        const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
-        onChange(selectedOptions);
-    }
 
     const searchText = (value) => {
         setIsComponentVisible(true);
@@ -27,6 +23,23 @@ const AutoComplete = (props) => {
             onTextChange(null);
         }
     }
+
+    const handleChange = (e) => {
+        onChange([e.target.value]);
+    };
+
+    const enterToSelect = (e) => {
+        if (e.keyCode === 13) {
+            onChange([e.target.value]);
+        }
+    };
+
+    const focusToOptions = (e) => {
+        if (e.keyCode === 40) {
+            e.target.blur();
+            document.getElementById("selectContainer").focus();
+        }
+    };
 
     return (
         <div className={"mainContainer"}>
@@ -52,8 +65,10 @@ const AutoComplete = (props) => {
                     <input
                         className={"searchInput"}
                         type='text'
+                        id='searchInput'
                         data-testid="searchInput"
                         placeholder="Search.."
+                        onKeyDown={focusToOptions}
                         onKeyUp={(e) => searchText(e.target.value)} />
                 </div>
                 {dictionary.length > 0 && value ?
@@ -61,13 +76,18 @@ const AutoComplete = (props) => {
                         className={"selectContainer"}
                         multiple={true}
                         data-testid="selectContainer"
-                        ref={ref}
-                        onChange={handleChange}>
+                        ref={refSelect}
+                        id="selectContainer"
+                        onKeyUp={enterToSelect}
+                        onClick={handleChange}
+                        autoFocus>
                         {
                             isComponentVisible ?
                                 dictionary.map((item) => {
                                     return (
-                                        <option className={"options"} value={item}>{item}</option>
+                                        <option
+                                            className={"options"}
+                                            value={item}>{item}</option>
                                     )
                                 }) : null
                         }

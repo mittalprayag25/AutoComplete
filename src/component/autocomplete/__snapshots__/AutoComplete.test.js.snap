@@ -54,6 +54,7 @@ exports[`Renders AutoComplete 1`] = `
         <input
           class="searchInput"
           data-testid="searchInput"
+          id="searchInput"
           placeholder="Search.."
           type="text"
         />
@@ -61,6 +62,7 @@ exports[`Renders AutoComplete 1`] = `
       <select
         class="selectContainer"
         data-testid="selectContainer"
+        id="selectContainer"
         multiple=""
       >
         <option

@@ -73,6 +73,42 @@ test('Test selectCOntainer when no options', () => {
     expect(queryByTestId('selectContainer')).toBeNull();
 });
 
+test('Test Input with keyDOWN code 40', () => {
+    const props = {
+        value: "America",
+        options: ['India', 'Singapore', 'China', 'America', 'Australia', 'Kenya', 'South Afirca', 'Iraq', 'Canada'],
+        onChange: jest.fn(),
+        multiValues: [],
+        onRemove: jest.fn(),
+        onTextChange: jest.fn(),
+    }
+
+    const { queryByTestId, getByTestId } = render(<AutoComplete {...props} />);
+    act(() => {
+        fireEvent.keyDown(getByTestId('searchInput'), { target: { value: 'america' }, key: "Enter", keyCode: 40 });
+    });
+
+    expect(queryByTestId('selectContainer')).not.toBeNull();
+});
+
+test('Test Input with keyDOWN with keydown code not 40', () => {
+    const props = {
+        value: "America",
+        options: ['India', 'Singapore', 'China', 'America', 'Australia', 'Kenya', 'South Afirca', 'Iraq', 'Canada'],
+        onChange: jest.fn(),
+        multiValues: [],
+        onRemove: jest.fn(),
+        onTextChange: jest.fn(),
+    }
+
+    const { queryByTestId, getByTestId } = render(<AutoComplete {...props} />);
+    act(() => {
+        fireEvent.keyDown(getByTestId('searchInput'), { target: { value: 'america' }, key: "Enter", keyCode: 40 });
+    });
+
+    expect(queryByTestId('selectContainer')).not.toBeNull();
+});
+
 test('Test select Container', () => {
     const props = {
         value: "America",
@@ -103,7 +139,7 @@ test('Test select Container when input text is empty', () => {
     expect(queryByTestId('selectContainer')).toBeNull();
 });
 
-test('Test select Container when input text is empty', () => {
+test('Test select Container when option is clicked', () => {
     const props = {
         value: "America",
         options: ['India', 'Singapore', 'China', 'America', 'Australia', 'Kenya', 'South Afirca', 'Iraq', 'Canada'],
@@ -114,7 +150,25 @@ test('Test select Container when input text is empty', () => {
     }
     const { getByTestId } = render(<AutoComplete {...props} />);
     act(() => {
-        fireEvent.change(getByTestId('selectContainer'), { target: { value: '' } });
+        fireEvent.click(getByTestId('selectContainer'));
+    });
+    expect(props.onChange).toHaveBeenCalledTimes(1);
+
+});
+
+
+test('Test select Container when option is entered by pressing enter key', () => {
+    const props = {
+        value: "America",
+        options: ['India', 'Singapore', 'China', 'America', 'Australia', 'Kenya', 'South Afirca', 'Iraq', 'Canada'],
+        onChange: jest.fn(),
+        multiValues: [],
+        onRemove: jest.fn(),
+        onTextChange: jest.fn(),
+    }
+    const { getByTestId } = render(<AutoComplete {...props} />);
+    act(() => {
+        fireEvent.keyUp(getByTestId('selectContainer'), { key: "Enter", keyCode: 13 });
     });
     expect(props.onChange).toHaveBeenCalledTimes(1);
 
