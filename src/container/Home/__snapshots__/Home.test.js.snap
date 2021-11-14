@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Home 1`] = `
+<DocumentFragment>
+  <div
+    class="homeContainer"
+  >
+    <div
+      class="mainContainer"
+    >
+      <div
+        class="searchableContainer"
+      >
+        <div
+          class="multiSelectContainer"
+        >
+          <input
+            class="searchInput"
+            data-testid="searchInput"
+            placeholder="Search.."
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

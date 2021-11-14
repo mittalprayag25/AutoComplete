@@ -1,11 +1,11 @@
 @font-face {
     font-family: GillSans;
-    src: url(../../utils/fonts/GillSans.ttf);
+    src: url(../../assets/fonts/GillSans.ttf);
   }
 
   @font-face {
     font-family: GillSansBold;
-    src: url(../../utils/fonts/GillSansBold.ttf);
+    src: url(../../assets/fonts/GillSansBold.ttf);
   }
 
 
