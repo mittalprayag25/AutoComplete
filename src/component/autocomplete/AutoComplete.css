@@ -1,3 +1,14 @@
+@font-face {
+    font-family: GillSans;
+    src: url(../../utils/fonts/GillSans.ttf);
+  }
+
+  @font-face {
+    font-family: GillSansBold;
+    src: url(../../utils/fonts/GillSansBold.ttf);
+  }
+
+
 .mainContainer{
     width : 40%;
 }
@@ -6,7 +17,7 @@
 }
 .searchInput{
     width : 95%;
-    line-height: 50px;
+    line-height: 35px;
     margin-top: 5px;
     background-image: url(./../../assets/search.png);
     background-size: 15px 15px;
@@ -14,7 +25,10 @@
     background-position: 10px;
     padding-left: 40px;
     border: none;
-    border-bottom: 1px solid grey;
+    margin-left: 10px;
+    font-family: GillSans;
+    font-size: 16px;
+    flex: 1;
 }
 
 .selectContainer {
@@ -22,5 +36,50 @@
     border: none;
 }
 .options{
-    padding: 22px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-family: GillSans;
+    border: 0.1px dotted #e1e1e1;
+}
+.selectedOptions{
+    padding: 5px 10px;
+    border: 1px solid #e1e1e1;
+    border-radius: 20%;
+    background-color: #e1e1e1;
+    margin: 1px 1px;
+    font-size: 12px;
+    font-family: GillSans;
+}
+.multiSelectContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e1e1e1;
+    flex: 3;
+    padding: 5px 0px;
+}
+
+.selectedOptionContainer{
+    display:flex;
+    flex-direction: row;
+    overflow:auto;
+    margin-left: 10px;
+    flex: 2;
+    flex-wrap: wrap;
+}
+.selectedOptionContainer::-webkit-scrollbar {
+    display: none;
+  }
+.cross{
+    margin-left: 5px;
+    color: red;
+}
+
+input {
+    outline:none;
+}
+
+select {
+    outline:none;
 }
