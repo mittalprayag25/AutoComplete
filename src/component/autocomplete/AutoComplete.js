@@ -41,27 +41,63 @@ const AutoComplete = (props) => {
         }
     };
 
+    const multiSelectedOptions = () => {
+        return (
+            multiValues.length > 0 ?
+                <div className={"selectedOptionContainer"} >
+                    {
+                        multiValues.map((item, key) => {
+                            return (
+                                <span data-testid="selectedOptions"
+                                    className={"selectedOptions"}>{`${item}`}
+                                    <span
+                                        data-testid="removeItem"
+                                        className="cross" onClick={() => onRemove(item)}>x</span>
+                                </span>
+                            )
+                        })
+                    }
+                </div> : null
+        );
+    };
+
+    const displayOption = () => {
+        return (
+            isComponentVisible ?
+                dictionary.map((item) => {
+                    return (
+                        <option
+                            className={"options"}
+                            value={item}>{item}</option>
+                    )
+                }) : null
+        );
+    };
+
+    const displayAvailableSuggestions = () => {
+        return (
+            dictionary.length > 0 && value ?
+                <select
+                    className={"selectContainer"}
+                    multiple={true}
+                    data-testid="selectContainer"
+                    ref={refSelect}
+                    id="selectContainer"
+                    onKeyUp={enterToSelect}
+                    onClick={handleChange}
+                    autoFocus>
+
+                    {displayOption()}
+
+                </select> : null
+        )
+    };
+
     return (
         <div className={"mainContainer"}>
             <div className={"searchableContainer"}>
                 <div className="multiSelectContainer">
-                    {
-                        multiValues.length > 0 ?
-                            <div className={"selectedOptionContainer"} >
-                                {
-                                    multiValues.map((item, key) => {
-                                        return (
-                                            <span data-testid="selectedOptions"
-                                                className={"selectedOptions"}>{`${item}`}
-                                                <span
-                                                    data-testid="removeItem"
-                                                    className="cross" onClick={() => onRemove(item)}>x</span>
-                                            </span>
-                                        )
-                                    })
-                                }
-                            </div> : null
-                    }
+                    {multiSelectedOptions()}
                     <input
                         className={"searchInput"}
                         type='text'
@@ -71,28 +107,9 @@ const AutoComplete = (props) => {
                         onKeyDown={focusToOptions}
                         onKeyUp={(e) => searchText(e.target.value)} />
                 </div>
-                {dictionary.length > 0 && value ?
-                    <select
-                        className={"selectContainer"}
-                        multiple={true}
-                        data-testid="selectContainer"
-                        ref={refSelect}
-                        id="selectContainer"
-                        onKeyUp={enterToSelect}
-                        onClick={handleChange}
-                        autoFocus>
-                        {
-                            isComponentVisible ?
-                                dictionary.map((item) => {
-                                    return (
-                                        <option
-                                            className={"options"}
-                                            value={item}>{item}</option>
-                                    )
-                                }) : null
-                        }
-                    </select> : null
-                }
+
+                {displayAvailableSuggestions()}
+
             </div>
         </div>
     );
