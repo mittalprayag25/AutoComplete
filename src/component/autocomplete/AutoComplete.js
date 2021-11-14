@@ -9,7 +9,7 @@ const AutoComplete = (props) => {
 
     useEffect(() => {
         setDictionary(options);
-    }, [options]);
+    }, [0]);
 
 
     const searchText = (value) => {
